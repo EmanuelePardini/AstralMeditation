@@ -70,7 +70,7 @@ const MeditationPage = () => {
         Your browser does not support the audio tag.
       </audio>
 
-      {/* Pulsanti e gestione del timer */}
+      /* Pulsanti e gestione del timer */
       <div className="content">
         <h1> {Math.floor(countdown / 60)} : {countdown % 60}</h1>
         <button onClick={handleToggle}>{running ? 'Stop' : 'Start'}</button>
