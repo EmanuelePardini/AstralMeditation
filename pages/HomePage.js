@@ -38,7 +38,6 @@ const HomePage = () => {
         <option value="gargantuablue">Gargantua Blue</option>
         <option value="fairyfalls">Fairy Falls</option>
         <option value="interstellar">Interstellar</option>
-        {/* Aggiungi altre opzioni per le diverse stanze */}
       </select>
       <button onClick={handleNavigate}>Start Timer</button>
     </div>
