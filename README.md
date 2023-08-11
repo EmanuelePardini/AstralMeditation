@@ -1,6 +1,6 @@
 # AstralMeditation
 A react-based WebApp for meditation
-![Hacker News Screenshot](media/images/example.png)
+![Hacker News Screenshot](media/example.png)
 
 ## Features:
 -Choose your meditation Room
