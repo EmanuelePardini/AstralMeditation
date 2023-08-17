@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 import { stopTimer, restartTimer, setCountdown, resetTimer } from '../store/timerSlice';
 import { roomData } from '../utils/RoomData';
 import '../css/MeditationPage.css' 
@@ -22,8 +23,8 @@ const MeditationPage = () => {
 
     if (running && countdown > 0) {
       interval = setInterval(() => {
-        dispatch(setCountdown(countdown - 1)); // Decrementa i minuti
-      }, 1000); // Ogni 60 secondi (1 minuto)
+        dispatch(setCountdown(countdown - 1)); // Decrement minutes
+      }, 1000); // 60 seconds(a minute)
     } else if (countdown === 0) {
       dispatch(stopTimer());
       videoRef.current.pause();
@@ -60,6 +61,10 @@ const MeditationPage = () => {
 
   return (
        <div className="meditation-container">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Meditation Room</title>
+        </Helmet>
       <video ref={videoRef} className="background-video" autoPlay loop muted>
         <source  src={roomData[selectedRoom].video} type="video/mp4" />
         Your browser does not support the video tag.
@@ -70,7 +75,7 @@ const MeditationPage = () => {
         Your browser does not support the audio tag.
       </audio>
 
-      /* Pulsanti e gestione del timer */
+      {/* Button and timer management */}
       <div className="content">
         <h1> {Math.floor(countdown / 60)} : {countdown % 60}</h1>
         <button onClick={handleToggle}>{running ? 'Stop' : 'Start'}</button>

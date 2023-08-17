@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 import { startTimer } from '../store/timerSlice';
 import { roomData } from '../utils/RoomData';
 import '../css/HomePage.css';
@@ -8,18 +9,22 @@ import '../css/HomePage.css';
 
 
 const HomePage = () => {
-  const [countdown, setcountdown] = useState(5); // Valore iniziale a 5 minuti
-  const [selectedRoom, setSelectedRoom] = useState('hanami'); // Valore predefinito
+  const [countdown, setcountdown] = useState(5); // Default value
+  const [selectedRoom, setSelectedRoom] = useState('hanami'); // Default value
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    dispatch(startTimer(countdown * 60)); // Converti i minuti in secondi
+    dispatch(startTimer(countdown * 60)); // Minute conversion in seconds
     navigate('/meditation',{ state: { selectedRoom }}); 
   };
 
   return (
     <div className='home-container'>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Home</title>
+        </Helmet>
        <video className="background-video" autoPlay loop muted>
         <source  src={roomData.home.video} type="video/mp4" />
         Your browser does not support the video tag.
@@ -38,6 +43,7 @@ const HomePage = () => {
         <option value="gargantuablue">Gargantua Blue</option>
         <option value="fairyfalls">Fairy Falls</option>
         <option value="interstellar">Interstellar</option>
+        {/* Here for other rooms */}
       </select>
       <button onClick={handleNavigate}>Start Timer</button>
     </div>
