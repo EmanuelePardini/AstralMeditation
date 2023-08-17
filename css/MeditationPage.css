@@ -1,9 +1,15 @@
 
 .meditation-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+  }
+
+  .content{
+    opacity: 80%;
   }
   
   .background-video {
